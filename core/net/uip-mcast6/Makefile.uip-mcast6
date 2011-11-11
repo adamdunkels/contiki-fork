@@ -1,0 +1,2 @@
+CONTIKI_SOURCEFILES += uip-mcast6-route.c
+CONTIKI_SOURCEFILES += smrf.c roll-tm.c
