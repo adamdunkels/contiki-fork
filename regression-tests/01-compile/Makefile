@@ -15,14 +15,11 @@ hello-world/wismote \
 hello-world/z1 \
 collect/sky \
 er-rest-example/sky \
-mb851/mb851 \
-netperf/exp5438 \
+example-shell/native \
 netperf/sky \
 powertrace/sky \
 rime/sky \
 rime/z1 \
-rime/exp5438 \
-rime/micaz \
 rime/wismote \
 rest-example/sky \
 servreg-hack/sky \
@@ -32,14 +29,10 @@ sky-shell/sky \
 sky-shell-exec/sky \
 sky-shell-webserver/sky \
 telnet-server/minimal-net \
-webbrowser/native \
 webserver/minimal-net \
 webserver-ipv6/sky \
-webserver-ipv6-raven/avr-raven \
-wget/sky \
 wget/minimal-net \
-z1/z1 \
-rime/exp5438
+z1/z1
 
 TOOLS=
 
