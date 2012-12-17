@@ -21,6 +21,7 @@ script:
 after_script:
   ## Print a basic summary in unix style
   - "echo 'Summary:'; cat regression-tests/??-$BUILD_TYPE/summary"
+  - "echo `pwd`"
   ## This will detect whether the build should pass or fail
   - "test `grep -c -i 'fail' regression-tests/??-$BUILD_TYPE/summary` -eq 0"
 
@@ -29,14 +30,14 @@ env:
   ## This magically kick-off parallel jobs for each of the for the sets
   ## of environment variable defined below
   - BUILD_TYPE='compile'
-  - BUILD_TYPE='collect' MAKE_TARGETS='cooja'
-  - BUILD_TYPE='rpl' MAKE_TARGETS='cooja'
-  - BUILD_TYPE='rime' MAKE_TARGETS='cooja'
-  - BUILD_TYPE='ipv6' MAKE_TARGETS='cooja'
+#  - BUILD_TYPE='collect' MAKE_TARGETS='cooja'
+#  - BUILD_TYPE='rpl' MAKE_TARGETS='cooja'
+#  - BUILD_TYPE='rime' MAKE_TARGETS='cooja'
+#  - BUILD_TYPE='ipv6' MAKE_TARGETS='cooja'
   - BUILD_TYPE='hello-world' MAKE_TARGETS='cooja'
   - BUILD_TYPE='base' MAKE_TARGETS='cooja'
-  - BUILD_TYPE='netperf' MAKE_TARGETS='cooja'
-  - BUILD_TYPE='shell' MAKE_TARGETS='cooja'
-  - BUILD_TYPE='elfloader' MAKE_TARGETS='cooja'
-  - BUILD_TYPE='ipv4' MAKE_TARGETS='cooja'
-  - BUILD_TYPE='ipv6-apps' MAKE_TARGETS='cooja'
+#  - BUILD_TYPE='netperf' MAKE_TARGETS='cooja'
+#  - BUILD_TYPE='shell' MAKE_TARGETS='cooja'
+#  - BUILD_TYPE='elfloader' MAKE_TARGETS='cooja'
+#  - BUILD_TYPE='ipv4' MAKE_TARGETS='cooja'
+#  - BUILD_TYPE='ipv6-apps' MAKE_TARGETS='cooja'
