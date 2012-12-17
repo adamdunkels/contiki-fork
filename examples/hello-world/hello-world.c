@@ -1,3 +1,4 @@
+#error explicit error
 /*
  * Copyright (c) 2006, Swedish Institute of Computer Science.
  * All rights reserved.
