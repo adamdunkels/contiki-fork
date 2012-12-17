@@ -21,6 +21,7 @@ script:
 after_script:
   ## Print a basic summary in unix style
   - "echo 'Summary:'; cat regression-tests/??-$BUILD_TYPE/summary"
+  - "echo `pwd`"
   ## This will detect whether the build should pass or fail
   - "test `grep -c -i 'fail' regression-tests/??-$BUILD_TYPE/summary` -eq 0"
 
