@@ -47,9 +47,15 @@ char simSerialReceivingFlag;
 static int (* input_handler)(unsigned char) = NULL;
 
 /*-----------------------------------------------------------------------------------*/
-void rs232_init(void) { }
+void
+rs232_init(void)
+{
+}
 /*-----------------------------------------------------------------------------------*/
-void rs232_set_speed(unsigned char speed) { }
+void
+rs232_set_speed(unsigned char speed)
+{
+}
 /*-----------------------------------------------------------------------------------*/
 void
 rs232_set_input(int (*f)(unsigned char))
@@ -57,7 +63,9 @@ rs232_set_input(int (*f)(unsigned char))
   input_handler = f;
 }
 /*-----------------------------------------------------------------------------------*/
-void rs232_send(char c) {
+void
+rs232_send(char c)
+{
   printf("%c", c);
 }
 /*-----------------------------------------------------------------------------------*/

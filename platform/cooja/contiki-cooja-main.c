@@ -60,6 +60,10 @@
 
 #include "sys/node-id.h"
 
+#if WITH_SLIP
+#include "dev/slip.h"
+#endif /* WITH_SLIP */
+
 
 /* JNI-defined functions, depends on the environment variable CLASSNAME */
 #ifndef CLASSNAME
@@ -306,7 +310,7 @@ contiki_init()
     if(1) {
       uip_ipaddr_t ipaddr;
       int i;
-      uip_ip6addr(&ipaddr, 0xaaaa, 0, 0, 0, 0, 0, 0, 0);
+      uip_ip6addr(&ipaddr, 0xfc00, 0, 0, 0, 0, 0, 0, 0);
       uip_ds6_set_addr_iid(&ipaddr, &uip_lladdr);
       uip_ds6_addr_add(&ipaddr, 0, ADDR_TENTATIVE);
       printf("Tentative global IPv6 address ");
@@ -326,6 +330,20 @@ contiki_init()
   /* Start autostart processes (defined in Contiki application) */
   print_processes(autostart_processes);
   autostart_start(autostart_processes);
+
+#if IP64_CONF_UIP_FALLBACK_INTERFACE_SLIP && WITH_SLIP
+  /* Start the SLIP */
+  printf("Initiating SLIP: my IP is 172.16.0.2...\n");
+  {
+    uip_ip4addr_t ipv4addr, netmask;
+
+    uip_ipaddr(&ipv4addr, 172, 16, 0, 2);
+    uip_ipaddr(&netmask, 255, 255, 255, 0);
+    ip64_set_ipv4_address(&ipv4addr, &netmask);
+  }
+  rs232_set_input(slip_input_byte);
+  log_set_putchar_with_slip(1);
+#endif /* IP64_CONF_UIP_FALLBACK_INTERFACE_SLIP */
 }
 /*---------------------------------------------------------------------------*/
 static void

@@ -147,7 +147,7 @@ public class CC2420RadioPacketConverter {
     return cc2420DataStripped;
   }
 
-  public static ConvertedRadioPacket fromCC2420ToCooja(byte[] data) {
+  public static RadioPacket fromCC2420ToCooja(byte[] data) {
     int pos = 0;
     int len; /* Payload */
     int originalLen;
@@ -194,7 +194,7 @@ public class CC2420RadioPacketConverter {
     /*logger.info("Payload pos: " + pos);
     logger.info("Payload length: " + len);*/
 
-    byte originalData[] = new byte[originalLen];
+    final byte originalData[] = new byte[originalLen];
     System.arraycopy(data, 6 /* skipping preamble+synch+len */, originalData, 0, originalLen);
     if (len < 0) {
       /*logger.warn("No cross-level conversion available: negative packet length");*/
@@ -202,7 +202,12 @@ public class CC2420RadioPacketConverter {
     }
     byte convertedData[] = new byte[len];
     System.arraycopy(data, pos, convertedData, 0, len);
-    return new ConvertedRadioPacket(convertedData, originalData);
+//    return new ConvertedRadioPacket(convertedData, originalData);
+    return new RadioPacket() {
+		public byte[] getPacketData() {
+			return originalData;
+		}
+	};
   }
 
 }

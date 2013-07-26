@@ -36,6 +36,8 @@
 #define PROFILE_CONF_ON 0
 #define ENERGEST_CONF_ON 0
 #define LOG_CONF_ENABLED 1
+#define RIMESTATS_CONF_ON 1
+#define RIMESTATS_CONF_ENABLED 1
 
 #define COOJA 1
 
@@ -63,10 +65,10 @@
 /* Default network config */
 #if WITH_UIP6
 
-#define NULLRDC_CONF_802154_AUTOACK  0
-#define NULLRDC_CONF_SEND_802154_ACK 0
+#define NULLRDC_CONF_802154_AUTOACK  1
+#define NULLRDC_CONF_SEND_802154_ACK 1
 #define NULLRDC_CONF_ACK_WAIT_TIME                RTIMER_SECOND / 500
-#define NULLRDC_CONF_AFTER_ACK_DETECTED_WAIT_TIME RTIMER_SECOND / 250
+#define NULLRDC_CONF_AFTER_ACK_DETECTED_WAIT_TIME 0
 
 
 /* Network setup for IPv6 */
@@ -241,6 +243,9 @@ typedef unsigned long rtimer_clock_t;
 #endif /* UIP_CONF_IPV6 */
 
 #define CFS_CONF_OFFSET_TYPE	long
+
+#define MULTICHAN_CONF_SET_CHANNEL(x) radio_set_channel(x)
+#define MULTICHAN_CONF_READ_RSSI(x) 0
 
 /* include the project config */
 /* PROJECT_CONF_H might be defined in the project Makefile */
