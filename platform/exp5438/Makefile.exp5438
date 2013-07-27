@@ -44,6 +44,17 @@ ifeq ($(UIP_CONF_IPV6),1)
 CFLAGS += -DWITH_UIP6=1
 endif
 
+ifeq "$(shell msp430-gcc -dumpversion)" "4.7.0"
+ifndef GCC470FLAGS
+GCC470FLAGS += -mmemory-model=large \
+               -mdata-region=far -mcode-region=far -Wl,-gc-sections \
+               -ffunction-sections \
+               -fdata-sections
+endif
+CFLAGS += $(GCC470FLAGS)
+LDFLAGS += $(GCC470FLAGS)
+endif
+
 CONTIKI_TARGET_SOURCEFILES += $(ARCH) $(UIPDRIVERS)
 
 ifdef IAR
