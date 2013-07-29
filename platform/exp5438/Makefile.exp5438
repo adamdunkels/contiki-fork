@@ -45,14 +45,12 @@ CFLAGS += -DWITH_UIP6=1
 endif
 
 ifeq "$(shell msp430-gcc -dumpversion)" "4.7.0"
-ifndef GCC470FLAGS
-GCC470FLAGS += -mmemory-model=large \
-               -mdata-region=far -mcode-region=far -Wl,-gc-sections \
-               -ffunction-sections \
-               -fdata-sections
+ifndef IAR
+TARGET_MEMORY_MODEL ?= medium
+CFLAGS += -mmemory-model=$(TARGET_MEMORY_MODEL)
+CFLAGS += -ffunction-sections -fdata-sections -mcode-region=far
+LDFLAGS += -mmemory-model=$(TARGET_MEMORY_MODEL) -Wl,-gc-sections
 endif
-CFLAGS += $(GCC470FLAGS)
-LDFLAGS += $(GCC470FLAGS)
 endif
 
 CONTIKI_TARGET_SOURCEFILES += $(ARCH) $(UIPDRIVERS)
