@@ -1564,6 +1564,9 @@ uip_process(uint8_t flag)
     UIP_UDP_BUF->udpchksum = 0xffff;
   }
 #endif /* UIP_UDP_CHECKSUMS */
+#if UIP_CONF_IPV6_RPL
+  rpl_update_header_empty();
+#endif /* UIP_CONF_IPV6_RPL */
   UIP_STAT(++uip_stat.udp.sent);
   goto ip_send_nolen;
 #endif /* UIP_UDP */
