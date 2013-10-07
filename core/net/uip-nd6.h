@@ -72,10 +72,15 @@
 #define UIP_ND6_SEND_RA UIP_CONF_ND6_SEND_RA
 #endif
 #ifndef UIP_CONF_ND6_SEND_NA
+#if UIP_CONF_IPV6_RPL
+#define UIP_ND6_SEND_NA                     0   /* NA are not needed
+                                                   when RPL is used */
+#else /* UIP_CONF_IPV6_RPL */
 #define UIP_ND6_SEND_NA                     1   /* enable/disable NA sending */
-#else
+#endif /* UIP_CONF_IPV6_RPL */
+#else /* UIP_CONF_ND6_SEND_NA */
 #define UIP_ND6_SEND_NA UIP_CONF_ND6_SEND_NA
-#endif
+#endif /* UIP_CONF_ND6_SEND_NA */
 #define UIP_ND6_MAX_RA_INTERVAL             600
 #define UIP_ND6_MIN_RA_INTERVAL             (UIP_ND6_MAX_RA_INTERVAL / 3)
 #define UIP_ND6_M_FLAG                      0
