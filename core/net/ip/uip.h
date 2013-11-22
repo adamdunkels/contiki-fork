@@ -53,7 +53,7 @@
 #ifndef UIP_H_
 #define UIP_H_
 
-#include "net/uipopt.h"
+#include "net/ip/uipopt.h"
 
 /**
  * Representation of an IP address.
@@ -116,7 +116,7 @@ typedef uip_eth_addr uip_lladdr_t;
 #endif /*UIP_CONF_LL_80211*/
 #endif /*UIP_CONF_LL_802154*/
 
-#include "net/tcpip.h"
+#include "net/ip/tcpip.h"
 
 /*---------------------------------------------------------------------------*/
 /* First, the functions that should be called from the
