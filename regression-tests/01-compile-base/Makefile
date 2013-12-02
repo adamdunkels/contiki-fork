@@ -32,6 +32,7 @@ webserver-ipv6/sky \
 wget/minimal-net \
 z1/z1 \
 settings-example/avr-raven \
+ipv6/mcast6/sky \
 
 TOOLS=
 

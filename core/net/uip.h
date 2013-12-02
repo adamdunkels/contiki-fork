@@ -2095,6 +2095,32 @@ CCIF extern uip_lladdr_t uip_lladdr;
   (((a)->u8[0]) == 0xFF)
 
 /**
+ * \brief is address a global multicast address (FFxE::/16),
+ * a is of type uip_ipaddr_t*
+ * */
+#define uip_is_addr_mcast_global(a) \
+  ((((a)->u8[0]) == 0xFF) && \
+  (((a)->u8[1] & 0x0F) == 0x0E))
+
+/**
+ * \brief is address a non-routable multicast address. We currently only
+ * consider global scope as routable (Scope == 0x0E), although it can be argued
+ * that site- and organization-local should also be routable within the lowpan.
+ * a is of type uip_ipaddr_t*
+ * */
+#define uip_is_addr_mcast_non_routable(a) \
+  ((((a)->u8[0]) == 0xFF) && \
+  (((a)->u8[1] & 0x0F) != 0x0E))
+
+/**
+ * \brief is address a routable multicast address. We currently only
+ * consider global scope as routable (Scope == 0x0E), although it can be argued
+ * that site- and organization-local should also be routable within the lowpan.
+ * a is of type uip_ipaddr_t*
+ * */
+#define uip_is_addr_mcast_routable(a) uip_is_addr_mcast_global(a)
+
+/**
  * \brief is group-id of multicast address a
  * the all nodes group-id
  */
