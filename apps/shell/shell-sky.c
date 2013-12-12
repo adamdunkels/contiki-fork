@@ -44,12 +44,12 @@
 
 #include "net/rime.h"
 #include "net/netstack.h"
-#include "dev/cc2420.h"
+#include "cc2420.h"
 #include "dev/leds.h"
-#include "dev/sht11.h"
+#include "dev/sht11/sht11.h"
 #include "dev/light-sensor.h"
 #include "dev/battery-sensor.h"
-#include "dev/sht11-sensor.h"
+#include "dev/sht11/sht11-sensor.h"
 #include "net/rime/timesynch.h"
 
 #include "sys/node-id.h"

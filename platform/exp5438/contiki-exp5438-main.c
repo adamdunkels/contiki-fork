@@ -34,7 +34,7 @@
 #include <stdarg.h>
 
 #include "dev/button-sensor.h"
-#include "dev/cc2420.h"
+#include "cc2420.h"
 #include "dev/flash.h"
 #include "dev/leds.h"
 #include "dev/serial-line.h"
@@ -54,7 +54,7 @@
 #include "duty-cycle-scroller.h"
 
 #if WITH_UIP6
-#include "net/uip-ds6.h"
+#include "net/ipv6/uip-ds6.h"
 #endif /* WITH_UIP6 */
 
 
