@@ -190,7 +190,7 @@
  * Initial metric attributed to a link when the ETX is unknown
  */
 #ifndef RPL_CONF_INIT_LINK_METRIC
-#define RPL_INIT_LINK_METRIC        2
+#define RPL_INIT_LINK_METRIC        5
 #else
 #define RPL_INIT_LINK_METRIC        RPL_CONF_INIT_LINK_METRIC
 #endif
